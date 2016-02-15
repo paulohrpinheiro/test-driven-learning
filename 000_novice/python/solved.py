@@ -63,6 +63,8 @@ def diga_ola(nome):
     'Olá, Paulo.'
     >>> diga_ola('  Paulo  ')
     'Olá, Paulo.'
+    >>> diga_ola('  Paulo Henrique  ')
+    'Olá, Paulo Henrique.'
     """
 
     nome_limpo = nome.strip()
