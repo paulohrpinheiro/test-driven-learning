@@ -1,0 +1,35 @@
+# Test Driven Learning
+
+Melhore sua capacidade de programação e **TDD** (*Test Driven Development*) programando "orientado a testes".
+
+
+# Público alvo
+
+Todo aquele que está começando em uma linguagem e quer resolver uns exercícios, mas já se habituando a fazer *TDD*. Com uma diferença. Os testes já estão feitos. Leia os requisitos, implemente e teste.
+
+
+## Instalação
+
+1. Clone este repositório em sua máquina.
+
+
+## Uso
+
+1. Escolha um dos níveis (atualmente só o diretório *000_novice*).
+1. Trabalhe no diretório da linguagem que você prefere (atualmente você prefere *Python* ou *C*, não há outras ainda, e o C está sendo desenvolvido).
+1. Execute o comando `python -m unittest` para *Python* e `make test` para *C*.
+1. Se algum teste falhar, continue trabalhando e testando.
+
+
+## Quer ajudar no projeto?
+
+1. Clone ele!
+2. Crie uma *branch* para sua contribuição: `git checkout -b minha-contribuissaum`
+3. "Comite" suas alterações: `git commit -am 'Add some feature'`
+4. Dê um *push* para o *master*: `git push origin minha-contribuissaum`
+5. Faça o *pull request* :D
+
+
+## Licença
+
+Licenciado sob a *MIT License*, veja o arquivo [LICENSE](LICENSE).
