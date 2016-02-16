@@ -30,7 +30,7 @@ use warnings;
 
 use Test::Simple tests => 47;
 
-use solved;
+use problems;
 
 
 ok( negue(0), "negue: False" );
