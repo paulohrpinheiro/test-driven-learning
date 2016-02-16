@@ -32,6 +32,13 @@ SOFTWARE.
 
 #include <stdbool.h>
 
+
+typedef struct {
+    int *array;
+    int elements;
+} list_s;
+
+
 bool      negue(bool valor);
 wchar_t * diga_ola(const wchar_t *nome);
 int *     lista_numeros_pares(int quantos);

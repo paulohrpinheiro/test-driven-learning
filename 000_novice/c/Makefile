@@ -27,16 +27,16 @@
 CC=cc
 FLAGS=-Wall -ansi -pedantic -g
 
-solved.o: solved.c
+problems.o: problems.c
 	$(CC) -c $^ $(FLAGS) -o $@
 
-unittest: unittest.c solved.o
+unittest: unittest.c problems.o
 	$(CC) $^ $(FLAGS) -o $@
 
 .PHONY: clean all test
 
 clean:
-	rm -f solved solved.o unittest
+	rm -f problems problems.o unittest
 
 all: clean test
 
