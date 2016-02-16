@@ -43,10 +43,10 @@ sub negue {
 # do argumento recebido, mais um ponto final. A *string* recebida deve estar
 # limpa, ou seja, sem caracteres de espaço no começo ou no fim. Se a *string*
 # estiver vazia, retorna apenas "Olá!"
-# Solução copiada de http://br.perlmaven.com/trim
 sub diga_ola {
     my $nome = shift;
 
+    # Copiado de http://br.perlmaven.com/trim
     $nome =~ s/^\s+|\s+$//g;
 
     return "Olá!" if not $nome;
@@ -141,6 +141,7 @@ sub divisao {
     return $resultado;
 }
 
+
 # A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
 # um caractere indicando a operação aritmética básica a ser realizada ('+',
 # '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
@@ -157,6 +158,7 @@ sub operacao {
     die("Invalid operator [$operador]");
 }
 
+
 # A função `maior` deve receber um  *array* de números inteiros e retornar
 # qual é o maior deles.
 sub maior {
@@ -166,6 +168,7 @@ sub maior {
     my @sorted_lista = sort @lista;
     $sorted_lista[-1];
 }
+
 
 # A função `intersecao` deve receber dois *arrays* contendo números
 # inteiros, e retornar a interseção entre os conjuntos, ou seja, um *array*
@@ -179,5 +182,6 @@ sub intersecao {
     my @result = grep($hash_a{$_}, @$lista_b);
     return @result;
 }
+
 
 1;
