@@ -16,8 +16,8 @@ Todo aquele que está começando em uma linguagem e quer resolver uns exercício
 ## Uso
 
 1. Escolha um dos níveis (atualmente só o diretório *000_novice*).
-1. Trabalhe no diretório da linguagem que você prefere (atualmente você prefere *Python* ou *C*, não há outras ainda, e o C está sendo desenvolvido).
-1. Execute o comando `python -m unittest` para *Python* e `make test` para *C*.
+1. Trabalhe no diretório da linguagem que você prefere (atualmente você prefere *Python* ou *Perl*, e o C que você ama está sendo desenvolvido).
+1. Execute o comando `python -m unittest` para *Python*, `perl tests.t` para *Perl* e  `make test` para *C*.
 1. Se algum teste falhar, continue trabalhando e testando.
 
 
