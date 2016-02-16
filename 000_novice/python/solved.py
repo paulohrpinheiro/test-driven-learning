@@ -153,6 +153,8 @@ def subtracao(inteiros):
     -1
     >>> subtracao([-1, -2, -3])
     4
+    >>> subtracao([9, 3, 2, 1])
+    3
     """
 
     if len(inteiros) == 0:
@@ -187,6 +189,8 @@ def divisao(inteiros):
     exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
     retornar 5. Se a lista for vazia, deve retornar zero.
 
+    >>> divisao([5, 2])
+    2
     >>> divisao([])
     0
     >>> divisao([0])
