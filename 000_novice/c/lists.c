@@ -61,6 +61,10 @@ list_s *new_list(int elements) {
 bool is_equal_list(list_s *a, list_s *b) {
     int i;
 
+    if(NULL==a && NULL==b) {
+        return true;
+    }
+
     if(NULL==a || NULL==b) {
         return false;
     }

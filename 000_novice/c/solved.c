@@ -184,6 +184,10 @@ list_s *lista_numeros_multiplos(int elements, int base) {
         return NULL;
     }
 
+    if(0==base) {
+        return NULL;
+    }
+
     list = new_list(elements);
 
     if(NULL==list) {
@@ -208,7 +212,7 @@ list_s *lista_numeros_multiplos(int elements, int base) {
 }
 
 
-int soma(list_s *lista) {
+int soma(list_s *list) {
 /*  A função `soma` deve receber um *array* de números inteiros, e retornar
     a sua soma. Se a lista for vazia, deve retornar zero.
 
@@ -218,12 +222,22 @@ int soma(list_s *lista) {
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int i, result;
 
+    if(NULL==list||NULL==list->array||0==list->elements) {
+        return 0;
+    }
+
+    result = 0;
+    for(i=0; i < list->elements; i++) {
+        result += list->array[i];
+    }
+
+    return result;
 }
 
 
-int subtracao(list_s *soma) {
+int subtracao(list_s *list) {
 /*  A função `subtracao` deve receber um *array* de números inteiros, e
     retornar a subtração de todos os elementos em sequência. Por exemplo,
     subtracao([3,2,1]) deve retornar 0, e subtracao([10,2,3]) deve retornar 5.
@@ -237,28 +251,48 @@ int subtracao(list_s *soma) {
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int i, result;
 
+    if(NULL==list||NULL==list->array||0==list->elements) {
+        return 0;
+    }
+
+    result = list->array[0];
+    for(i=1; i < list->elements; i++) {
+        result -= list->array[i];
+    }
+
+    return result;
 }
 
 
-int multiplicacao(list_s *soma) {
+int multiplicacao(list_s *list) {
 /*  A função `multiplicação` deve receber um *array* de números inteiros, e
     retornar o seu produto. Se a lista for vazia, deve retornar zero.
 
-    { int *i = {1, 2, 3};    multiplicacao(i, 3); } ->  6
-    { int *i = {};           multiplicacao(i, 0); } ->  0
-    { int *i = {-2, 1, 4};   multiplicacao(i, 3); } -> -8
-    { int *i = {-2, -1, -4}; multiplicacao(i, 3); } ->  8
+    { int *i = {1, 2, 3};   multiplicacao(i, 3); } ->  6
+    { int *i = {};          multiplicacao(i, 0); } ->  0
+    { int *i = {-2, 1, 4};  multiplicacao(i, 3); } -> -8
+    { int *i = {-2, -1, 4}; multiplicacao(i, 3); } ->  8
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int i, result;
 
+    if(NULL==list||NULL==list->array||0==list->elements) {
+        return 0;
+    }
+
+    result = 1;
+    for(i=0; i < list->elements; i++) {
+        result *= list->array[i];
+    }
+
+    return result;
 }
 
 
-int divisao(list_s *soma) {
+int divisao(list_s *list) {
 /*   A função `divisao` deve receber um *array* de números inteiros, e
     retornar o resultado da sequência de divisões por cada elemento. Por
     exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
@@ -271,12 +305,22 @@ int divisao(list_s *soma) {
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int i, result;
 
+    if(NULL==list||NULL==list->array||0==list->elements) {
+        return 0;
+    }
+
+    result = list->array[0];
+    for(i=1; i < list->elements; i++) {
+        result /= list->array[i];
+    }
+
+    return result;
 }
 
 
-int operacao(char operador, list_s *soma) {
+int operacao(char operador, list_s *list) {
 /*  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
     um caractere indicando a operação aritmética básica a ser realizada ('+',
     '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
@@ -292,12 +336,20 @@ int operacao(char operador, list_s *soma) {
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int result;
 
+    switch (operador) {
+        case '+': result = soma(list); break;
+        case '-': result = subtracao(list); break;
+        case '*': result = multiplicacao(list); break;
+        case '/': result = divisao(list); break;
+    }
+
+    return result;
 }
 
 
-int maior(list_s *soma) {
+int maior(list_s *list) {
 /*  A função `maior` deve receber um  *array* de números inteiros e retornar
     qual é o maior deles.
 
@@ -307,8 +359,16 @@ int maior(list_s *soma) {
 */
 
     /* coloque aqui o seu código */
-    return 0;
+    int i, max;
 
+    max = list->array[0];
+    for(i=1; i < list->elements;i++) {
+        if(list->array[i] > max) {
+            max = list->array[i];
+        }
+    }
+
+    return max;
 }
 
 
@@ -324,6 +384,46 @@ list_s *intersecao(list_s *a, list_s *b) {
 */
 
     /* coloque aqui o seu código */
-    return NULL;
+    list_s *result;
+    int max;
 
+    max = (a->elements > b->elements) ? a->elements : b->elements;
+
+    result = new_list(max);
+
+    if(NULL==result) {
+        return NULL;
+    }
+
+    result->elements = 0;
+
+    {
+        int i, j, k;
+        bool has_element;
+
+        for(i=0; i < a->elements; i++) {
+            for(j=0; j < b->elements ; j++) {
+                if(a->array[i] == b->array[j]) {
+                    has_element = false;
+                    for(k=0; k < result->elements; k++) {
+                        if(a->array[i] == result->array[k]) {
+                            has_element = true;
+                            break;
+                        }
+                    }
+                    if(!has_element) {
+                        result->array[result->elements] = a->array[i];
+                        result->elements++;
+                    }
+                }
+            }
+        }
+    }
+
+    if(0==result->elements) {
+        free_list(result);
+        result = NULL;
+    }
+
+    return result;
 }
