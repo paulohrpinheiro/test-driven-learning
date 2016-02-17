@@ -83,17 +83,14 @@ static char *test_lista_numeros_pares(void) {
     int list_for_4[] = {2, 4, 6, 8};
     int list_for_5[] = {2, 4, 6, 8, 10};
 
-    result_for_1.array = &list_for_1[0];
+    result_for_1.array = list_for_1;
     result_for_1.elements = 1;
-    assert(result_for_1.elements == sizeof(result_for_1.array)/sizeof(int));
 
-    result_for_4.array = &list_for_4[0];
+    result_for_4.array = list_for_4;
     result_for_4.elements = 4;
-    assert(result_for_4.elements == sizeof(result_for_4.array)/sizeof(int));
 
     result_for_5.array = &list_for_5[0];
     result_for_5.elements = 5;
-    assert(result_for_5.elements == sizeof(result_for_5.array)/sizeof(int));
 
     mu_assert("Error in  0.", is_equal_list(lista_numeros_pares(0),  NULL));
     mu_assert("Error in  1.", is_equal_list(lista_numeros_pares(1),  &result_for_1));
