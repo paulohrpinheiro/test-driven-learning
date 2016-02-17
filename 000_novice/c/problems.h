@@ -31,8 +31,18 @@ SOFTWARE.
 
 
 #include <stdbool.h>
+#include <setjmp.h>
 
 #include "lists.h"
+
+
+extern jmp_buf jmp_buffer;
+
+
+enum {
+    OK,
+    ERR_DIV_BY_ZERO
+};
 
 
 bool      negue(bool);

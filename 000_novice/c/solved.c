@@ -291,20 +291,12 @@ int multiplicacao(list_s *list) {
     return result;
 }
 
-
-int divisao(list_s *list) {
-/*   A função `divisao` deve receber um *array* de números inteiros, e
+/*  A função `divisao` deve receber um *array* de números inteiros, e
     retornar o resultado da sequência de divisões por cada elemento. Por
     exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
     retornar 5. Se a lista for vazia, deve retornar zero.
-
-    { int *i = {};     divisao(i, 0); } -> 0
-    { int *i = {0};    divisao(i, 1); } -> 0
-    { int *i = {0, 1}; divisao(i, 2); } -> 0
-    { int *i = {1, 0}; divisao(i, 2); } -> deve dar pânico
 */
-
-    /* coloque aqui o seu código */
+int divisao(list_s *list) {
     int i, result;
 
     if(NULL==list||NULL==list->array||0==list->elements) {
@@ -313,6 +305,10 @@ int divisao(list_s *list) {
 
     result = list->array[0];
     for(i=1; i < list->elements; i++) {
+        if(0==list->array[i]) {
+            longjmp(jmp_buffer, ERR_DIV_BY_ZERO);
+        }
+
         result /= list->array[i];
     }
 

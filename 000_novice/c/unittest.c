@@ -32,6 +32,7 @@ SOFTWARE.
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <setjmp.h>
 
 #include "minunit.h"
 #include "lists.h"
@@ -40,6 +41,7 @@ SOFTWARE.
 
 
 int tests_run = 0;
+jmp_buf jmp_buffer;
 
 void free_heap(void *ptr) {
     if(NULL != (void *)ptr) {
@@ -258,13 +260,14 @@ void div_by_zero(int signum) {
 }
 
 static char *test_divisao(void) {
-    list_s list1, list3, list4, list5, list6;
+    list_s list1, list3, list4, list5, list6, list7;
     list_s *list2;
     int l1[] = {5, 2};
     int l3[] = {0};
     int l4[] = {16, 4, 2};
     int l5[] = {100, 2, 10};
     int l6[] = {0, 1};
+    int l7[] = {1, 0};
 
     list1.array = l1;
     list1.elements = 2;
@@ -281,6 +284,9 @@ static char *test_divisao(void) {
     list6.array = l6;
     list6.elements = 2;
 
+    list7.array = l7;
+    list7.elements = 2;
+
     puts("=> test_divisao:");
 
     mu_assert("Error in list1.", 2==divisao(&list1));
@@ -295,6 +301,20 @@ static char *test_divisao(void) {
     mu_assert("Error in list4.", 2==divisao(&list4));
     mu_assert("Error in list5.", 5==divisao(&list5));
     mu_assert("Error in list6.", 0==divisao(&list6));
+
+    {
+        int err_code;
+
+        err_code = setjmp(jmp_buffer);
+
+        if(OK==err_code) {
+            divisao(&list7);
+            mu_assert("Error in list7 false.", false);
+        }
+        else {
+            mu_assert("Error in list7.", ERR_DIV_BY_ZERO==err_code);
+        }
+    }
 
     return 0;
 }
