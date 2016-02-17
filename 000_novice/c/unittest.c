@@ -50,6 +50,7 @@ void free_heap(void *ptr) {
 }
 
 static char *test_negue() {
+    puts("=> test_negue:");
     mu_assert("FAIL negue(true).", false == negue(true));
     mu_assert("FAIL negue(false).", true  == negue(false));
 
@@ -70,6 +71,7 @@ bool compara_diga_ola(const char *nome, const char *esperado) {
 }
 
 static char *test_diga_ola(void) {
+    puts("=> test_diga_ola:");
     mu_assert("Error in test_diga_ola('').",          compara_diga_ola("", "Olá!"));
     mu_assert("Error in test_diga_ola('Paulo').",     compara_diga_ola("Paulo", "Olá, Paulo."));
     mu_assert("Error in test_diga_ola('  Paulo  ').", compara_diga_ola("  Paulo  ", "Olá, Paulo."));
@@ -78,7 +80,7 @@ static char *test_diga_ola(void) {
 }
 
 static char *test_lista_numeros_pares(void) {
-    list_s result_for_1, result_for_4, result_for_5;
+    list_s *result, result_for_1, result_for_4, result_for_5;
     int list_for_1[] = {2};
     int list_for_4[] = {2, 4, 6, 8};
     int list_for_5[] = {2, 4, 6, 8, 10};
@@ -89,19 +91,66 @@ static char *test_lista_numeros_pares(void) {
     result_for_4.array = list_for_4;
     result_for_4.elements = 4;
 
-    result_for_5.array = &list_for_5[0];
+    result_for_5.array = list_for_5;
     result_for_5.elements = 5;
 
-    mu_assert("Error in  0.", is_equal_list(lista_numeros_pares(0),  NULL));
-    mu_assert("Error in  1.", is_equal_list(lista_numeros_pares(1),  &result_for_1));
-    mu_assert("Error in  4.", is_equal_list(lista_numeros_pares(4),  &result_for_4));
-    mu_assert("Error in  5.", is_equal_list(lista_numeros_pares(5),  &result_for_5));
-    mu_assert("Error in -1.", is_equal_list(lista_numeros_pares(-1), NULL));
+    puts("=> test_lista_numeros_pares:");
+
+    result = lista_numeros_pares(0);
+    mu_assert("Error in  0.", !is_equal_list(result,  NULL));
+    free_list(result);
+
+    result = lista_numeros_pares(1);
+    mu_assert("Error in  1.", is_equal_list(result,  &result_for_1));
+    free_list(result);
+
+    result = lista_numeros_pares(4);
+    mu_assert("Error in  4.", is_equal_list(result,  &result_for_4));
+    free_list(result);
+
+    result = lista_numeros_pares(5);
+    mu_assert("Error in  5.", is_equal_list(result,  &result_for_5));
+    free_list(result);
+
+    result = lista_numeros_pares(-1);
+    mu_assert("Error in -1.", !is_equal_list(result, NULL));
+    free_list(result);
 
     return 0;
 }
 
 static char *test_lista_numeros_multiplos(void) {
+    list_s *result, result_for_1neg, result_for_10pos;
+    int list_for_1neg[] = {-3, -2, -1};
+    int list_for_10pos[] = {10, 20, 30};
+
+    result_for_1neg.array = list_for_1neg;
+    result_for_1neg.elements = 3;
+
+    result_for_10pos.array = list_for_10pos;
+    result_for_10pos.elements = 3;
+
+    puts("=> test_lista_numeros_multiplos:");
+
+    result = lista_numeros_multiplos(0, 10);
+    mu_assert("Error in  (0, 10).", !is_equal_list(result,  NULL));
+    free_list(result);
+
+    result = lista_numeros_multiplos(-1, 10);
+    mu_assert("Error in  (-1, 10).", !is_equal_list(result,  NULL));
+    free_list(result);
+
+    result = lista_numeros_multiplos(3, -1);
+    mu_assert("Error in  (3, -1).", is_equal_list(result,  &result_for_1neg));
+    free_list(result);
+
+    result = lista_numeros_multiplos(3, 0);
+    mu_assert("Error in  (3, 0).", !is_equal_list(result,  NULL));
+    free_list(result);
+
+    result = lista_numeros_multiplos(3, 10);
+    mu_assert("Error in  (3, 10).", is_equal_list(result,  &result_for_10pos));
+    free_list(result);
 
     return 0;
 }

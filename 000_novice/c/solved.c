@@ -127,7 +127,7 @@ char *diga_ola(const char *nome) {
 }
 
 
-list_s *lista_numeros_pares(int quantos) {
+list_s *lista_numeros_pares(int elements) {
 /*  A função `lista_numeros_pares` deve receber um parâmetro numérico
     inteiro que determina quantos números pares devem estar em um array que
     será o retorno da função.
@@ -140,23 +140,31 @@ list_s *lista_numeros_pares(int quantos) {
 */
 
     /* coloque aqui o seu código */
-    int *list;
+    list_s *list;
 
-    if(quantos <1) {
+    if(elements<1) {
         return NULL;
     }
 
-    list = (int *)calloc(quantos, sizeof(int));
+    list = new_list(elements);
 
     if(NULL==list) {
-
+        return NULL;
     }
 
-    return NULL;
+    {
+        int i;
+
+        for(i=0; i<elements; i++) {
+            list->array[i] = (i+1)*2;
+        }
+    }
+
+    return list;
 }
 
 
-list_s *lista_multiplos(int quantos, int base) {
+list_s *lista_numeros_multiplos(int elements, int base) {
 /*  A função `lista_multiplos` deve receber dois parâmetros numéricos
     inteiros e retornar uma lista de números inteiros. O tamanho da lista é
     determinado pelo primeiro parâmetro, e o número base será o segundo
@@ -170,9 +178,35 @@ list_s *lista_multiplos(int quantos, int base) {
 */
 
     /* coloque aqui o seu código */
-    return NULL;
+    list_s *list;
 
+    if(elements<1) {
+        return NULL;
+    }
+
+    list = new_list(elements);
+
+    if(NULL==list) {
+        return NULL;
+    }
+
+    {
+        int i;
+
+        if(base>0) {
+            for(i=0; i<elements; i++) {
+                list->array[i] = (i+1)*base;
+            }
+        } else {
+            for(i=elements; i>0; i--) {
+                list->array[elements-i] = i*base;
+            }
+        }
+    }
+
+    return list;
 }
+
 
 int soma(list_s *lista) {
 /*  A função `soma` deve receber um *array* de números inteiros, e retornar
@@ -187,6 +221,7 @@ int soma(list_s *lista) {
     return 0;
 
 }
+
 
 int subtracao(list_s *soma) {
 /*  A função `subtracao` deve receber um *array* de números inteiros, e
@@ -206,6 +241,7 @@ int subtracao(list_s *soma) {
 
 }
 
+
 int multiplicacao(list_s *soma) {
 /*  A função `multiplicação` deve receber um *array* de números inteiros, e
     retornar o seu produto. Se a lista for vazia, deve retornar zero.
@@ -220,6 +256,7 @@ int multiplicacao(list_s *soma) {
     return 0;
 
 }
+
 
 int divisao(list_s *soma) {
 /*   A função `divisao` deve receber um *array* de números inteiros, e
@@ -237,6 +274,7 @@ int divisao(list_s *soma) {
     return 0;
 
 }
+
 
 int operacao(char operador, list_s *soma) {
 /*  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
@@ -258,6 +296,7 @@ int operacao(char operador, list_s *soma) {
 
 }
 
+
 int maior(list_s *soma) {
 /*  A função `maior` deve receber um  *array* de números inteiros e retornar
     qual é o maior deles.
@@ -271,6 +310,7 @@ int maior(list_s *soma) {
     return 0;
 
 }
+
 
 list_s *intersecao(list_s *a, list_s *b) {
 /*  A função `intersecao` deve receber dois *arrays* contendo números
