@@ -30,13 +30,16 @@ FLAGS=-Wall -ansi -pedantic -g
 problems.o: problems.c
 	$(CC) -c $^ $(FLAGS) -o $@
 
-unittest: unittest.c problems.o
+lists.o: lists.c
+	$(CC) -c $^ $(FLAGS) -o $@
+
+unittest: unittest.c problems.o lists.o
 	$(CC) $^ $(FLAGS) -o $@
 
 .PHONY: clean all test
 
 clean:
-	rm -f problems problems.o unittest
+	rm -f problems problems.o lists.o unittest
 
 all: clean test
 
