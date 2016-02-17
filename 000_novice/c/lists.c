@@ -52,6 +52,8 @@ list_s *new_list(int elements) {
         return NULL;
     }
 
+    list->elements = elements;
+
     return list;
 }
 
@@ -67,7 +69,7 @@ bool is_equal_list(list_s *a, list_s *b) {
         return false;
     }
 
-    for(i=1; i<a->elements; i++) {
+    for(i=0; i < a->elements; i++) {
         if(a->array[i] != b->array[i]) {
             return false;
         }
