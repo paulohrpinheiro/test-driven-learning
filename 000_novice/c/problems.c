@@ -45,7 +45,7 @@ bool negue(bool valor) {
     return true;
 }
 
-wchar_t *diga_ola(const wchar_t *nome) {
+char *diga_ola(const char *nome) {
 /*  A função `diga_ola` deve ser escrita de tal forma que receba como
     parâmetro um argumento *string*. Deve retornar a *string* "Olá, ", seguida
     do argumento recebido, mais um ponto final. A *string* recebida deve estar

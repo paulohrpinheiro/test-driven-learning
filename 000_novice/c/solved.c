@@ -27,8 +27,11 @@ SOFTWARE.
 */
 
 
-#include <wchar.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "problems.h"
 
@@ -47,12 +50,39 @@ bool negue(bool valor) {
     /* coloque aqui o seu código */
     if(true==valor) {
         return false;
-    else {
+    } else {
         return true;
     }
 }
 
-wchar_t *diga_ola(const wchar_t *nome) {
+char *clean_str(const char *polluted_str) {
+    char *begin, *end, *clean_str;
+    size_t len;
+
+    begin = (char *)polluted_str;
+    end = (char *)polluted_str + strlen(polluted_str) -1;
+
+    while('\0'!=*begin && isspace(*begin)) {
+        begin++;
+    }
+
+    while(begin!=end && isspace(*end)) {
+        end--;
+    }
+
+    len = end - begin + 1;
+
+    clean_str = (char *)calloc(len, sizeof(char));
+
+    if(NULL==clean_str) {
+        return NULL;
+    }
+
+    return strncpy(clean_str, begin, len);
+}
+
+
+char *diga_ola(const char *nome) {
 /*  A função `diga_ola` deve ser escrita de tal forma que receba como
     parâmetro um argumento *string*. Deve retornar a *string* "Olá, ", seguida
     do argumento recebido, mais um ponto final. A *string* recebida deve estar
@@ -66,14 +96,36 @@ wchar_t *diga_ola(const wchar_t *nome) {
 */
 
     /* coloque aqui o seu código */
-    wchar_t *begin, *end;
-    begin = nome;
+    char *sem_espacos, *masc, *gretting;
 
-    while('\0'!=*begin && iswblank(*begin)) {
-        begin++;
+    char *empty = "Olá!";
+    char *no_empty = "Olá, %s.";
+
+    sem_espacos = clean_str(nome);
+
+    if(NULL==sem_espacos) {
+        return NULL;
     }
 
+    if(0==strlen(sem_espacos)) {
+        masc = empty;
+    }
+    else {
+        masc = no_empty;
+    }
+
+    gretting = (char *)calloc(strlen(masc)+strlen(sem_espacos)+1, sizeof(char));
+
+    if(NULL==gretting) {
+        free(sem_espacos);
+        return NULL;
+    }
+
+    sprintf(gretting, masc, sem_espacos);
+
+    return gretting;
 }
+
 
 list_s *lista_numeros_pares(int quantos) {
 /*  A função `lista_numeros_pares` deve receber um parâmetro numérico
@@ -94,12 +146,15 @@ list_s *lista_numeros_pares(int quantos) {
         return NULL;
     }
 
-    list = (int *)calloc(quantos, size_of(int));
+    list = (int *)calloc(quantos, sizeof(int));
 
     if(NULL==list) {
 
     }
+
+    return NULL;
 }
+
 
 list_s *lista_multiplos(int quantos, int base) {
 /*  A função `lista_multiplos` deve receber dois parâmetros numéricos

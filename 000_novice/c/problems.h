@@ -32,15 +32,11 @@ SOFTWARE.
 
 #include <stdbool.h>
 
-
-typedef struct {
-    int *array;
-    int elements;
-} list_s;
+#include "lists.h"
 
 
 bool      negue(bool valor);
-wchar_t * diga_ola(const wchar_t *nome);
+char *    diga_ola(const char *nome);
 list_s *  lista_numeros_pares(int quantos);
 list_s *  lista_multiplos(int quantos, int base);
 int       soma(list_s *lista);

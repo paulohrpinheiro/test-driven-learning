@@ -30,9 +30,12 @@ SOFTWARE.
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
-#include <wchar.h>
+#include <ctype.h>
+#include <string.h>
 
 #include "minunit.h"
+#include "lists.h"
+
 #include "problems.h"
 
 
@@ -46,24 +49,6 @@ void free_heap(void *ptr) {
     ptr = NULL;
 }
 
-bool array_is_equal(list_s *a, list_s *b) {
-    int i;
-
-    assert(NULL!=a && NULL!=b);
-
-    if(NULL==a->array || NULL==b->array || a->elements!=b->elements) {
-        return false;
-    }
-
-    for(i=1; i<a->elements; i++) {
-        if(a->array[i] != b->array[i]) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 static char *test_negue() {
     mu_assert("FAIL negue(true).", false == negue(true));
     mu_assert("FAIL negue(false).", true  == negue(false));
@@ -71,22 +56,23 @@ static char *test_negue() {
     return 0;
 }
 
-bool compara_diga_ola(const wchar_t *nome, const wchar_t *esperado) {
-    wchar_t *retornado;
+bool compara_diga_ola(const char *nome, const char *esperado) {
+    char *retornado;
     bool deu_certo;
 
     retornado = diga_ola(nome);
     assert(NULL!=retornado);
-    deu_certo = (0 == wcscmp(esperado, retornado));
+
+    deu_certo = (0 == strcmp(esperado, retornado));
 
     free_heap(retornado);
     return deu_certo;
 }
 
 static char *test_diga_ola(void) {
-    mu_assert("Error in test_diga_ola('').",          compara_diga_ola(L"", L"Olá!"));
-    mu_assert("Error in test_diga_ola('Paulo').",     compara_diga_ola(L"Paulo", L"Olá, Paulo."));
-    mu_assert("Error in test_diga_ola('  Paulo  ').", compara_diga_ola(L"  Paulo  ", L"Olá, Paulo."));
+    mu_assert("Error in test_diga_ola('').",          compara_diga_ola("", "Olá!"));
+    mu_assert("Error in test_diga_ola('Paulo').",     compara_diga_ola("Paulo", "Olá, Paulo."));
+    mu_assert("Error in test_diga_ola('  Paulo  ').", compara_diga_ola("  Paulo  ", "Olá, Paulo."));
 
     return 0;
 }
@@ -109,11 +95,11 @@ static char *test_lista_numeros_pares(void) {
     result_for_5.elements = 5;
     assert(result_for_5.elements == sizeof(result_for_5.array)/sizeof(int));
 
-    mu_assert("Error in  0.", array_is_equal(lista_numeros_pares(0),  NULL));
-    mu_assert("Error in  1.", array_is_equal(lista_numeros_pares(1),  &result_for_1));
-    mu_assert("Error in  4.", array_is_equal(lista_numeros_pares(4),  &result_for_4));
-    mu_assert("Error in  5.", array_is_equal(lista_numeros_pares(5),  &result_for_5));
-    mu_assert("Error in -1.", array_is_equal(lista_numeros_pares(-1), NULL));
+    mu_assert("Error in  0.", is_equal_list(lista_numeros_pares(0),  NULL));
+    mu_assert("Error in  1.", is_equal_list(lista_numeros_pares(1),  &result_for_1));
+    mu_assert("Error in  4.", is_equal_list(lista_numeros_pares(4),  &result_for_4));
+    mu_assert("Error in  5.", is_equal_list(lista_numeros_pares(5),  &result_for_5));
+    mu_assert("Error in -1.", is_equal_list(lista_numeros_pares(-1), NULL));
 
     return 0;
 }
