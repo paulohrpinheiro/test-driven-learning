@@ -35,16 +35,16 @@ SOFTWARE.
 #include "lists.h"
 
 
-bool      negue(bool valor);
-char *    diga_ola(const char *nome);
-list_s *  lista_numeros_pares(int quantos);
-list_s *  lista_multiplos(int quantos, int base);
-int       soma(list_s *lista);
-int       subtracao(list_s *lista);
-int       multiplicacao(list_s *lista);
-int       divisao(list_s *lista);
-int       operacao(char operador, list_s *lista);
-int       maior(list_s *lista);
-list_s *  intersecao(list_s *a, list_s *b);
+bool      negue(bool);
+char *    diga_ola(const char *);
+list_s *  lista_numeros_pares(int);
+list_s *  lista_numeros_multiplos(int, int);
+int       soma(list_s *);
+int       subtracao(list_s *);
+int       multiplicacao(list_s *);
+int       divisao(list_s *);
+int       operacao(char, list_s *);
+int       maior(list_s *);
+list_s *  intersecao(list_s *, list_s *);
 
 #endif
