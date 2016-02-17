@@ -30,7 +30,10 @@ SOFTWARE.
 #include <wchar.h>
 #include <stdbool.h>
 
+#include "problems.h"
+
 /* Precisa dar um include para alguma biblioteca ou extensão? inclua aqui. */
+
 
 
 bool negue(bool valor) {
@@ -42,7 +45,11 @@ bool negue(bool valor) {
 */
 
     /* coloque aqui o seu código */
-    return !valor;
+    if(true==valor) {
+        return false;
+    else {
+        return true;
+    }
 }
 
 wchar_t *diga_ola(const wchar_t *nome) {
@@ -68,7 +75,7 @@ wchar_t *diga_ola(const wchar_t *nome) {
 
 }
 
-int *lista_numeros_pares(int quantos) {
+list_s *lista_numeros_pares(int quantos) {
 /*  A função `lista_numeros_pares` deve receber um parâmetro numérico
     inteiro que determina quantos números pares devem estar em um array que
     será o retorno da função.
@@ -81,11 +88,20 @@ int *lista_numeros_pares(int quantos) {
 */
 
     /* coloque aqui o seu código */
-    return NULL;
+    int *list;
 
+    if(quantos <1) {
+        return NULL;
+    }
+
+    list = (int *)calloc(quantos, size_of(int));
+
+    if(NULL==list) {
+
+    }
 }
 
-int *lista_multiplos(int quantos, int base) {
+list_s *lista_multiplos(int quantos, int base) {
 /*  A função `lista_multiplos` deve receber dois parâmetros numéricos
     inteiros e retornar uma lista de números inteiros. O tamanho da lista é
     determinado pelo primeiro parâmetro, e o número base será o segundo
@@ -103,7 +119,7 @@ int *lista_multiplos(int quantos, int base) {
 
 }
 
-int soma(int *inteiros, size_t quantos) {
+int soma(list_s *lista) {
 /*  A função `soma` deve receber um *array* de números inteiros, e retornar
     a sua soma. Se a lista for vazia, deve retornar zero.
 
@@ -117,7 +133,7 @@ int soma(int *inteiros, size_t quantos) {
 
 }
 
-int subtracao(int *inteiros, size_t quantos) {
+int subtracao(list_s *soma) {
 /*  A função `subtracao` deve receber um *array* de números inteiros, e
     retornar a subtração de todos os elementos em sequência. Por exemplo,
     subtracao([3,2,1]) deve retornar 0, e subtracao([10,2,3]) deve retornar 5.
@@ -135,7 +151,7 @@ int subtracao(int *inteiros, size_t quantos) {
 
 }
 
-int multiplicacao(int *inteiros, size_t quantos) {
+int multiplicacao(list_s *soma) {
 /*  A função `multiplicação` deve receber um *array* de números inteiros, e
     retornar o seu produto. Se a lista for vazia, deve retornar zero.
 
@@ -150,7 +166,7 @@ int multiplicacao(int *inteiros, size_t quantos) {
 
 }
 
-int divisao(int *inteiros, size_t quantos) {
+int divisao(list_s *soma) {
 /*   A função `divisao` deve receber um *array* de números inteiros, e
     retornar o resultado da sequência de divisões por cada elemento. Por
     exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
@@ -167,7 +183,7 @@ int divisao(int *inteiros, size_t quantos) {
 
 }
 
-int operacao(char operador, int *inteiros, size_t quantos) {
+int operacao(char operador, list_s *soma) {
 /*  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
     um caractere indicando a operação aritmética básica a ser realizada ('+',
     '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
@@ -187,7 +203,7 @@ int operacao(char operador, int *inteiros, size_t quantos) {
 
 }
 
-int maior(int *inteiros, size_t quantos) {
+int maior(list_s *soma) {
 /*  A função `maior` deve receber um  *array* de números inteiros e retornar
     qual é o maior deles.
 
@@ -201,7 +217,7 @@ int maior(int *inteiros, size_t quantos) {
 
 }
 
-int *intersecao(int *a, size_t a_size, int *b, size_t b_size) {
+list_s *intersecao(list_s *a, list_s *b) {
 /*  A função `intersecao` deve receber dois *arrays* contendo números
     inteiros, e retornar a interseção entre os conjuntos, ou seja, um *array*
     que contenha apenas os números que estejam contidos nos dois *arrays*

@@ -1,5 +1,5 @@
-#ifndef __PROBLEMS_H__
-#define __PROBLEMS_H__
+#ifndef __TDH_PROBLEMS_H__
+#define __TDH_PROBLEMS_H__
 
 /*
 Test Driven Learning Project.
@@ -41,14 +41,14 @@ typedef struct {
 
 bool      negue(bool valor);
 wchar_t * diga_ola(const wchar_t *nome);
-int *     lista_numeros_pares(int quantos);
-int *     lista_multiplos(int quantos, int base);
-int       soma(int *inteiros, size_t quantos);
-int       subtracao(int *inteiros, size_t quantos);
-int       multiplicacao(int *inteiros, size_t quantos);
-int       divisao(int *inteiros, size_t quantos);
-int       operacao(char operador, int *inteiros, size_t quantos);
-int       maior(int *inteiros, size_t quantos);
-int *     intersecao(int *a, size_t a_size, int *b, size_t b_size);
+list_s *  lista_numeros_pares(int quantos);
+list_s *  lista_multiplos(int quantos, int base);
+int       soma(list_s *lista);
+int       subtracao(list_s *lista);
+int       multiplicacao(list_s *lista);
+int       divisao(list_s *lista);
+int       operacao(char operador, list_s *lista);
+int       maior(list_s *lista);
+list_s *  intersecao(list_s *a, list_s *b);
 
 #endif
