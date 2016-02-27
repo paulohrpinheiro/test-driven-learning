@@ -67,7 +67,7 @@ pub fn diga_ola(nome:&str) -> String {
         return "Olá!".to_string();
     }
 
-    "Olá, ".to_string() + &nome_limpo.to_string() + "."
+    format!("Olá, {}.", &nome_limpo)
 }
 
 
