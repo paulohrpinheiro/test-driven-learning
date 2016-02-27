@@ -63,7 +63,7 @@ pub fn negue(value:bool) -> bool {
 pub fn diga_ola(nome:&str) -> String {
     let nome_limpo = nome.trim();
 
-    if "" == nome_limpo {
+    if nome_limpo.is_empty() {
         return "Olá!".to_string();
     }
 
