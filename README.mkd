@@ -16,9 +16,13 @@ Todo aquele que está começando em uma linguagem e quer resolver uns exercício
 ## Uso
 
 1. Escolha um dos níveis (atualmente só o diretório [*000_novice*](000_novice)).
-1. Trabalhe no diretório da linguagem que você prefere (atualmente você prefere [Python](000_novice/python) ou [Perl](000_novice/perl), e o [C](000_novice/c) que você ama está sendo desenvolvido).
+1. Trabalhe no diretório da linguagem que você prefere:
+   1. [Python](000_novice/python)
+   1. [Perl](000_novice/perl)
+   1. [C](000_novice/c)
+   1. [Rust](000_novice/rust)
 1. Trabalhe nos arquivos `problems.*`. Existem arquivos `solved.*` com sugestão de soluções. Eles são a minha solução para os problemas, e servem como meus testes para testar os testes.
-1. Execute o comando `python3 problems.py` para *Python*, `perl tests.t` para *Perl* e  `make test` para *C*.
+1. Execute o comando `python3 problems.py` para *Python*, `perl tests.t` para *Perl*, `make test` para *C*, e `cargo test` para *Rust*.
 1. Se algum teste falhar, continue trabalhando e testando.
 
 
