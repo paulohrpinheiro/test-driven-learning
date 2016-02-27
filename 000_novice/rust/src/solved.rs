@@ -63,11 +63,11 @@ pub fn negue(value:bool) -> bool {
 pub fn diga_ola(nome:&str) -> String {
     let nome_limpo = nome.trim();
 
-    if "" == nome_limpo {
+    if nome_limpo.is_empty() {
         return "Olá!".to_string();
     }
 
-    "Olá, ".to_string() + &nome_limpo.to_string() + "."
+    format!("Olá, {}.", &nome_limpo)
 }
 
 
@@ -157,7 +157,7 @@ pub fn soma(lista:Vec<i32>) -> i32 {
 /// assert_eq!(3, rust::problems::subtracao(vec![9, 3, 2, 1]));
 /// ```
 pub fn subtracao(lista:Vec<i32>) -> i32 {
-    if lista.len() < 1 {
+    if lista.is_empty() {
         return 0;
     }
 
@@ -178,7 +178,7 @@ pub fn subtracao(lista:Vec<i32>) -> i32 {
 /// assert_eq!(-8, rust::problems::multiplicacao(vec![-2, 1, 4]));
 /// assert_eq!(8, rust::problems::multiplicacao(vec![-2, -1, 4]));
 pub fn multiplicacao(lista:Vec<i32>) -> i32 {
-    if lista.len() < 1 {
+    if lista.is_empty() {
         return 0;
     }
 
@@ -204,7 +204,7 @@ pub fn multiplicacao(lista:Vec<i32>) -> i32 {
 /// assert_eq!(0, rust::problems::divisao(vec![0, 1]));
 /// //assert_eq!(0, rust::problems::divisao(vec![1, 0]));
 pub fn divisao(lista:Vec<i32>) ->i32 {
-    if lista.len() < 1 {
+    if lista.is_empty() {
         return 0;
     }
 
