@@ -1,11 +1,14 @@
 # Test Driven Learning
 
-Melhore sua capacidade de programação e **TDD** (*Test Driven Development*) programando "orientado a testes".
+Melhore sua capacidade de programação e **TDD** (*Test Driven Development*)
+programando "orientado a testes".
 
 
 # Público alvo
 
-Todo aquele que está começando em uma linguagem e quer resolver uns exercícios, mas já se habituando a fazer *TDD*. Com uma diferença. Os testes já estão feitos. Leia os requisitos, implemente e teste.
+Todo aquele que está começando em uma linguagem e quer resolver uns exercícios,
+mas já se habituando a fazer *TDD*. Com uma diferença. Os testes já estão
+feitos. Leia os requisitos, implemente e teste.
 
 
 ## Instalação
@@ -21,8 +24,13 @@ Todo aquele que está começando em uma linguagem e quer resolver uns exercício
    1. [Perl](000_novice/perl)
    1. [C](000_novice/c)
    1. [Rust](000_novice/rust)
-1. Trabalhe nos arquivos `problems.*`. Existem arquivos `solved.*` com sugestão de soluções. Eles são a minha solução para os problemas, e servem como meus testes para testar os testes.
-1. Execute o comando `python3 problems.py` para *Python*, `perl tests.t` para *Perl*, `make test` para *C*, e `cargo test` para *Rust*.
+   1. [Ruby](000_novice/ruby)
+1. Trabalhe nos arquivos `problems.*`. Existem arquivos `solved.*` com sugestão
+   de soluções. Eles são a minha solução para os problemas, e servem como meus
+   testes para testar os testes.
+1. Execute o comando `python3 problems.py` para *Python*, `perl tests.t` para
+   *Perl*, `make test` para *C*, `cargo test` para *Rust*, `ruby tests.rb` (eu
+   gosto da opção `-v`) para *Ruby*.
 1. Se algum teste falhar, continue trabalhando e testando.
 
 
