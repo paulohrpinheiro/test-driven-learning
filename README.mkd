@@ -1,46 +1,75 @@
 # Test Driven Learning
 
-Melhore sua capacidade de programação e **TDD** (*Test Driven Development*)
-programando "orientado a testes".
+Melhore sua capacidade de programação, trabalhando com código e especificações
+de terceiros, e, especialmente, satisfazendo a testes unitários.
 
 
 # Público alvo
 
-Todo aquele que está começando em uma linguagem e quer resolver uns exercícios,
-mas já se habituando a fazer *TDD*. Com uma diferença. Os testes já estão
-feitos. Leia os requisitos, implemente e teste.
+Todo aquele que está começando em uma linguagem e quer resolver alguns
+exercícios, mas fazendo testes de unidade. Com uma diferença: os testes já
+estão feitos. Leia os requisitos, implemente e verifique.
 
 
 ## Instalação
 
-1. Clone este repositório em sua máquina.
+Clone este repositório em sua máquina:
+
+    git clone https://github.com/paulohrpinheiro/test-driven-learning
+
+
+Melhor ainda de você der um *fork* desse projeto, se tiver uma conta
+no *GitHub*. Aqui tem-se as instruções:
+
+    https://help.github.com/articles/fork-a-repo/
 
 
 ## Uso
 
-1. Escolha um dos níveis (atualmente só o diretório [*000_novice*](000_novice)).
-1. Trabalhe no diretório da linguagem que você prefere:
-   1. [Python](000_novice/python)
-   1. [Perl](000_novice/perl)
-   1. [C](000_novice/c)
-   1. [Rust](000_novice/rust)
-   1. [Ruby](000_novice/ruby)
-1. Trabalhe nos arquivos `problems.*`. Existem arquivos `solved.*` com sugestão
-   de soluções. Eles são a minha solução para os problemas, e servem como meus
-   testes para testar os testes.
-1. Execute o comando `python3 problems.py` para *Python*, `perl tests.t` para
-   *Perl*, `make test` para *C*, `cargo test` para *Rust*, `ruby tests.rb` (eu
-   gosto da opção `-v`) para *Ruby*.
-1. Se algum teste falhar, continue trabalhando e testando.
+Primeiro, escolha um dos níveis (atualmente só o
+diretório [*000_novice*](000_novice)).
+
+Então crie uma *branch* para você. Isso faz parte do
+exercício: `git checkout -b minhasolucao` (*minhasolucao* é apenas uma
+sugestão de nome). Trabalhe nos arquivos `problems.*`. Execute os testes.
+Em cada pasta específica da linguagem há instruções de como executá-los.
+Existe  uma *branch* com sugestão de soluções: é a [branch solved](). Para
+passar a essa *branch*, execute o comando `git checkout solved`, e para
+voltar à *branch minhasolucao*, onde devem estar seus códigos, digite o
+comando `git checkout minhasolucao`. Em *solved* está a minha solução
+para os problemas, que serve como meus testes para testar os testes. Pode
+servir de referência, se quiser comparar seu código ou não ter entendido
+alguma coisa.
+
+Agora você pode começar a trabalhar no diretório da linguagem que você prefere:
+
+1. [Python](000_novice/python)
+1. [Perl](000_novice/perl)
+1. [C](000_novice/c)
+1. [Rust](000_novice/rust)
+1. [Ruby](000_novice/ruby)
+1. [Javascript](000_novice/javascript)
+
+Para testar, cada linguagem tem seu comando. Dentro da pasta e *branch* que
+você trabalhou, execute o comando específico:
+
+Linguagem | comando
+----------|--------
+*Python3* | `python3 problems.py`
+*perl*    | `perl tests.t`
+*C*       | `make test`
+*Rust*    | `cargo test`
+*Ruby*    | `ruby tests.rb`
+
+Se algum teste falhar, continue trabalhando e testando.
 
 
-## Quer ajudar no projeto?
+# Quer ajudar no projeto?
 
 1. Clone ele!
-2. Crie uma *branch* para sua contribuição: `git checkout -b minha-contribuissaum`
-3. "Comite" suas alterações: `git commit -am 'Add some feature'`
-4. Dê um *push* para o *master*: `git push origin minha-contribuissaum`
-5. Faça o *pull request* :D
+1. Crie uma *branch* para sua contribuição: `git checkout -b minha-contribuissaum`
+1. "Comite" suas alterações: `git commit -am 'Add some feature'`
+1. Faça o *pull request*  :stuck_out_tongue:
 
 
 ## Licença
