@@ -59,18 +59,20 @@ Agora você pode começar a trabalhar no diretório da linguagem que você prefe
 1. [C](000_novice/c)
 1. [Rust](000_novice/rust)
 1. [Ruby](000_novice/ruby)
+1. [JavaScript](000_novice/javascript)
 
 
 Para testar, cada linguagem tem seu comando. Dentro da pasta e *branch* que
 você trabalhou, execute o comando específico:
 
-Linguagem | comando
-----------|--------
-*Python3* | `python3 problems.py`
-*Perl*    | `perl tests.t`
-*C*       | `make test`
-*Rust*    | `cargo test`
-*Ruby**   | `ruby tests.rb -v`
+Linguagem    | comando
+-------------|--------
+*Python3*    | `python3 problems.py`
+*Perl*       | `perl tests.t`
+*C*          | `make test`
+*Rust*       | `cargo test`
+*Ruby**      | `ruby tests.rb -v`
+*JavaScript* | `d8 problems.js`
 
 Se algum teste falhar, continue trabalhando e testando.
 
