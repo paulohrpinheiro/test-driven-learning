@@ -42,7 +42,7 @@ function doFail(message) {
 }
 
 function assert(functionRef, functionParameters, expected, description) {
-    if(functionRef.apply(null, functionParameters) === expected) {
+    if(JSON.stringify(functionRef.apply(null, functionParameters)) === JSON.stringify(expected)) {
         doPass(description);
     }
     else {
@@ -120,7 +120,7 @@ assert(lista_multiplos, [ 3,  0], []          , 'lista_multiplos_004');
 assert(lista_multiplos, [ 3, 10], [10, 20, 30], 'lista_multiplos_005');
 
 
-function soma(inteiros, quantos) {
+function soma(inteiros) {
 //  A função `soma` deve receber um *array* de números inteiros, e retornar
 //    a sua soma. Se a lista for vazia, deve retornar zero.
 
@@ -139,7 +139,6 @@ function subtracao(inteiros) {
 //    Se a lista for vazia, deve retornar zero.
 
     /* coloque aqui o seu código */
-
 }
 
 assert(subtracao, [[3, 2, 1]]   ,  0, 'subtracao_001');
@@ -149,7 +148,7 @@ assert(subtracao, [[1, 2]]      , -1, 'subtracao_004');
 assert(subtracao, [[-1, -2, -3]],  4, 'subtracao_005');
 
 
-function multiplicacao(inteiros, quantos) {
+function multiplicacao(inteiros) {
 //  A função `multiplicação` deve receber um *array* de números inteiros, e
 //    retornar o seu produto. Se a lista for vazia, deve retornar zero.
 
@@ -159,10 +158,10 @@ function multiplicacao(inteiros, quantos) {
 assert(multiplicacao, [[1, 2, 3]]   ,  6, 'multiplicacao_001');
 assert(multiplicacao, [[]]          ,  0, 'multiplicacao_002');
 assert(multiplicacao, [[-2, 1, 4]]  , -8, 'multiplicacao_003');
-assert(multiplicacao, [[-2, -1, -4]],  8, 'multiplicacao_004');
+assert(multiplicacao, [[-2, -1, -4]], -8, 'multiplicacao_004');
 
 
-function divisao(inteiros, quantos) {
+function divisao(inteiros) {
 //   A função `divisao` deve receber um *array* de números inteiros, e
 //    retornar o resultado da sequência de divisões por cada elemento. Por
 //    exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
@@ -180,7 +179,7 @@ assert(divisao, [[0, 1]]      , 0 , 'divisao_005');
 assertAnyException(divisao, [[1, 0]], 'divisao_006');
 
 
-function operacao(perador, inteiros, quantos) {
+function operacao(operador, inteiros) {
 //  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
 //    um caractere indicando a operação aritmética básica a ser realizada ('+',
 //    '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
@@ -191,10 +190,10 @@ function operacao(perador, inteiros, quantos) {
     /* coloque aqui o seu código */
 }
 
-assert(operacao, ['+', [1, 2]], 3 , 'operacao_001');
-assert(operacao, ['-', [1, 2]], 1 , 'operacao_002');
-assert(operacao, ['*', [1, 2]], 2 , 'operacao_003');
-assert(operacao, ['/', [1, 2]], 0 , 'operacao_004');
+assert(operacao, ['+', [1, 2]],  3 , 'operacao_001');
+assert(operacao, ['-', [1, 2]], -1 , 'operacao_002');
+assert(operacao, ['*', [1, 2]],  2 , 'operacao_003');
+assert(operacao, ['/', [1, 2]],  1 , 'operacao_004');
 
 assertAnyException(operacao, ['=', [1, 2]], 'operacao_005');
 
