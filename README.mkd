@@ -27,19 +27,30 @@ no *GitHub*. Aqui tem-se as instruções:
 ## Uso
 
 Primeiro, escolha um dos níveis (atualmente só o
-diretório [*000_novice*](000_novice)).
+diretório [*000_novice*](000_novice)). Então crie uma *branch* para você. Isso
+faz parte do exercício:
 
-Então crie uma *branch* para você. Isso faz parte do
-exercício: `git checkout -b minhasolucao` (*minhasolucao* é apenas uma
-sugestão de nome). Trabalhe nos arquivos `problems.*`. Execute os testes.
-Em cada pasta específica da linguagem há instruções de como executá-los.
+    git checkout -b minhasolucao # *minhasolucao* é uma sugestão de nome
+
+
+Trabalhe nos arquivos `problems.*`, execute os testes conforme explicado logo
+mais abaixo.
+
 Existe  uma *branch* com sugestão de soluções: é a [branch solved](). Para
-passar a essa *branch*, execute o comando `git checkout solved`, e para
-voltar à *branch minhasolucao*, onde devem estar seus códigos, digite o
-comando `git checkout minhasolucao`. Em *solved* está a minha solução
-para os problemas, que serve como meus testes para testar os testes. Pode
-servir de referência, se quiser comparar seu código ou não ter entendido
-alguma coisa.
+passar a essa *branch*, execute o comando:
+
+    git checkout solved
+
+
+Para voltar à *branch minhasolucao*, onde devem estar seus códigos, digite o
+comando:
+
+    git checkout minhasolucao
+
+
+Em *solved* está a minha solução para os problemas, que serve como meus testes
+para testar os testes. Pode servir de referência, se quiser comparar seu
+código ou não ter entendido alguma coisa.
 
 Agora você pode começar a trabalhar no diretório da linguagem que você prefere:
 
@@ -48,7 +59,7 @@ Agora você pode começar a trabalhar no diretório da linguagem que você prefe
 1. [C](000_novice/c)
 1. [Rust](000_novice/rust)
 1. [Ruby](000_novice/ruby)
-1. [Javascript](000_novice/javascript)
+
 
 Para testar, cada linguagem tem seu comando. Dentro da pasta e *branch* que
 você trabalhou, execute o comando específico:
@@ -56,10 +67,10 @@ você trabalhou, execute o comando específico:
 Linguagem | comando
 ----------|--------
 *Python3* | `python3 problems.py`
-*perl*    | `perl tests.t`
+*Perl*    | `perl tests.t`
 *C*       | `make test`
 *Rust*    | `cargo test`
-*Ruby*    | `ruby tests.rb`
+*Ruby**   | `ruby tests.rb -v`
 
 Se algum teste falhar, continue trabalhando e testando.
 
