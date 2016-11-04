@@ -1,6 +1,6 @@
 [package]
 name = "rust"
 version = "0.1.0"
-authors = ["Paulo Henrique Rodrigues Pinheiro <paulo@sysincloud.it>"]
+authors = ["Paulo Henrique Rodrigues Pinheiro <paulohrpinheiro@gmail.com>"]
 
 [dependencies]
