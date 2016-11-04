@@ -42,7 +42,7 @@ function doFail(message) {
 }
 
 function assert(functionRef, functionParameters, expected, description) {
-    if(functionRef.apply(null, functionParameters) === expected) {
+    if(JSON.stringify(functionRef.apply(null, functionParameters)) === JSON.stringify(expected)) {
         doPass(description);
     }
     else {
@@ -68,6 +68,8 @@ function negue(x) {
 //    retornar a negação desse valor.
 
     /* coloque aqui o seu código */
+
+    return !x;
 }
 
 assert(negue, [true]  , false , 'negue_001');
@@ -82,6 +84,15 @@ function diga_ola(nome) {
 //    estiver vazia, retorna apenas "Olá!"
 
     /* coloque aqui o seu código */
+
+    var nomeSemEspacos = nome.trim();
+
+    if (!nomeSemEspacos) {
+        return "Olá!";
+    }
+    else {
+        return "Olá, " + nomeSemEspacos + ".";
+    }
 }
 
 assert(diga_ola, [""]         , "Olá!"       , 'diga_ola_001');
@@ -95,6 +106,14 @@ function lista_numeros_pares(quantos) {
 //    será o retorno da função.
 
     /* coloque aqui o seu código */
+
+    var pares = [];
+
+    for(var i=1; i<=quantos; i++) {
+        pares.push(i*2);
+    }
+
+    return pares;
 }
 
 assert(lista_numeros_pares, [ 0], []              , 'lista_numeros_pares_001');
@@ -111,6 +130,21 @@ function lista_multiplos(quantos, base) {
 //    parâmetro.
 
     /* coloque aqui o seu código */
+
+    if(base===0||quantos===0) {
+        return [];
+    }
+
+    var multiplos = [];
+
+    for(var i=1; i<=quantos; i++) {
+        multiplos.push(base*i);
+    }
+
+    // Em caso de base negativa
+    multiplos.sort(function (a, b) {  return a - b;  });
+
+    return multiplos;
 }
 
 assert(lista_multiplos, [ 0, 10], []          , 'lista_multiplos_001');
@@ -120,11 +154,19 @@ assert(lista_multiplos, [ 3,  0], []          , 'lista_multiplos_004');
 assert(lista_multiplos, [ 3, 10], [10, 20, 30], 'lista_multiplos_005');
 
 
-function soma(inteiros, quantos) {
+function soma(inteiros) {
 //  A função `soma` deve receber um *array* de números inteiros, e retornar
 //    a sua soma. Se a lista for vazia, deve retornar zero.
 
     /* coloque aqui o seu código */
+
+    var resultadoSoma = 0;
+
+    for(var i=0; i<inteiros.length; i++) {
+        resultadoSoma += inteiros[i];
+    }
+
+    return resultadoSoma;
 }
 
 assert(soma, [[]]   , 0, 'soma_001');
@@ -140,6 +182,17 @@ function subtracao(inteiros) {
 
     /* coloque aqui o seu código */
 
+    if(inteiros.length===0) {
+        return 0;
+    }
+
+    var resultadoSubtracao = inteiros[0];
+
+    for(var i=1; i<inteiros.length; i++) {
+        resultadoSubtracao -= inteiros[i];
+    }
+
+    return resultadoSubtracao;
 }
 
 assert(subtracao, [[3, 2, 1]]   ,  0, 'subtracao_001');
@@ -149,26 +202,56 @@ assert(subtracao, [[1, 2]]      , -1, 'subtracao_004');
 assert(subtracao, [[-1, -2, -3]],  4, 'subtracao_005');
 
 
-function multiplicacao(inteiros, quantos) {
+function multiplicacao(inteiros) {
 //  A função `multiplicação` deve receber um *array* de números inteiros, e
 //    retornar o seu produto. Se a lista for vazia, deve retornar zero.
 
     /* coloque aqui o seu código */
+
+    if(inteiros.length===0) {
+        return 0;
+    }
+
+    var resultadoMultiplicacao = 1;
+
+    for(var i=0; i<inteiros.length; i++) {
+        resultadoMultiplicacao *= inteiros[i];
+    }
+
+    return resultadoMultiplicacao;
 }
 
 assert(multiplicacao, [[1, 2, 3]]   ,  6, 'multiplicacao_001');
 assert(multiplicacao, [[]]          ,  0, 'multiplicacao_002');
 assert(multiplicacao, [[-2, 1, 4]]  , -8, 'multiplicacao_003');
-assert(multiplicacao, [[-2, -1, -4]],  8, 'multiplicacao_004');
+assert(multiplicacao, [[-2, -1, -4]], -8, 'multiplicacao_004');
 
 
-function divisao(inteiros, quantos) {
+function divisao(inteiros) {
 //   A função `divisao` deve receber um *array* de números inteiros, e
 //    retornar o resultado da sequência de divisões por cada elemento. Por
 //    exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
 //    retornar 5. Se a lista for vazia, deve retornar zero.
 
     /* coloque aqui o seu código */
+
+    if(inteiros.length===0) {
+        return 0;
+    }
+
+    var resultadoDivisao = inteiros[0];
+
+    for(var i=1; i<inteiros.length; i++) {
+        dividendo = inteiros[i];
+
+        if(dividendo==0) {
+            throw new Error('Divisão por zero!');
+        }
+
+        resultadoDivisao = Math.ceil(resultadoDivisao/dividendo);
+    }
+
+    return resultadoDivisao;
 }
 
 assert(divisao, [[16, 4, 2]]  , 2 , 'divisao_001');
@@ -180,7 +263,7 @@ assert(divisao, [[0, 1]]      , 0 , 'divisao_005');
 assertAnyException(divisao, [[1, 0]], 'divisao_006');
 
 
-function operacao(perador, inteiros, quantos) {
+function operacao(operador, inteiros) {
 //  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
 //    um caractere indicando a operação aritmética básica a ser realizada ('+',
 //    '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
@@ -189,12 +272,20 @@ function operacao(perador, inteiros, quantos) {
 //    caso de operação inválida, gere uma exceção.
 
     /* coloque aqui o seu código */
+
+    switch(operador) {
+        case '+': return soma(inteiros);
+        case '-': return subtracao(inteiros);
+        case '*': return multiplicacao(inteiros);
+        case '/': return divisao(inteiros);
+        default: throw new Error('Operador inválido');
+    }
 }
 
-assert(operacao, ['+', [1, 2]], 3 , 'operacao_001');
-assert(operacao, ['-', [1, 2]], 1 , 'operacao_002');
-assert(operacao, ['*', [1, 2]], 2 , 'operacao_003');
-assert(operacao, ['/', [1, 2]], 0 , 'operacao_004');
+assert(operacao, ['+', [1, 2]],  3 , 'operacao_001');
+assert(operacao, ['-', [1, 2]], -1 , 'operacao_002');
+assert(operacao, ['*', [1, 2]],  2 , 'operacao_003');
+assert(operacao, ['/', [1, 2]],  1 , 'operacao_004');
 
 assertAnyException(operacao, ['=', [1, 2]], 'operacao_005');
 
@@ -204,6 +295,20 @@ function maior(inteiros, quantos) {
 //    qual é o maior deles.
 
     /* coloque aqui o seu código */
+
+    if(inteiros.length===0) {
+        throw new Error('Lista vazia');
+    }
+
+    var maiorNumero = inteiros[0];
+
+    for(var i=1; i<inteiros.length; i++) {
+        if(inteiros[i]>maiorNumero) {
+            maiorNumero = inteiros[i];
+        }
+    }
+
+    return maiorNumero;
 }
 
 assert(maior, [[0, 1, 100]], 100, 'maior_001');
@@ -219,6 +324,16 @@ function intersecao(a, b) {
 //    passados para a função.
 
     /* coloque aqui o seu código */
+
+    var conjuntoResultante = [];
+
+    for(var i=0; i<a.length; i++) {
+        if(b.indexOf(a[i])!=-1) {
+            conjuntoResultante.push(a[i]);
+        }
+    }
+
+    return conjuntoResultante;
 }
 
 assert(intersecao, [[], []],         [] , 'intersecao_001');
