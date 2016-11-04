@@ -27,7 +27,7 @@
 
 require 'test/unit'
 
-require_relative 'solved'
+require_relative 'problems'
 
 class TestProblems < Test::Unit::TestCase
 

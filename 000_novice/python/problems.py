@@ -25,12 +25,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 >>> __name__
 '__main__'
 """
 
-# Precisa de algum módulo? importe aqui:
+
+import functools
+import operator
 
 
 def negue(valor):
@@ -44,8 +45,7 @@ def negue(valor):
     True
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    return not valor
 
 
 def diga_ola(nome):
@@ -63,10 +63,16 @@ def diga_ola(nome):
     'Olá, Paulo.'
     >>> diga_ola('  Paulo  ')
     'Olá, Paulo.'
+    >>> diga_ola('  Paulo Henrique  ')
+    'Olá, Paulo Henrique.'
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    nome_limpo = nome.strip()
+
+    if not nome_limpo:
+        return 'Olá!'
+    else:
+        return 'Olá, {}.'.format(nome_limpo)
 
 
 def lista_numeros_pares(quantos):
@@ -86,8 +92,7 @@ def lista_numeros_pares(quantos):
     []
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    return list(x for x in range(2, (quantos * 2) + 1) if x % 2 == 0)
 
 
 def lista_multiplos(quantos, base):
@@ -108,8 +113,13 @@ def lista_multiplos(quantos, base):
     [10, 20, 30]
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    if base == 0:
+        return []
+    else:
+        if base > 1:
+            return list(x for x in range(base, (base * quantos) + 1, base))
+        else:
+            return list(x for x in range((base * quantos), base + 1, -base))
 
 
 def soma(inteiros):
@@ -124,8 +134,7 @@ def soma(inteiros):
     3
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    return sum(inteiros)
 
 
 def subtracao(inteiros):
@@ -148,8 +157,10 @@ def subtracao(inteiros):
     3
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    if len(inteiros) == 0:
+        return 0
+    else:
+        return functools.reduce(operator.sub, inteiros)
 
 
 def multiplicacao(inteiros):
@@ -166,8 +177,10 @@ def multiplicacao(inteiros):
     8
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    if len(inteiros) == 0:
+        return 0
+    else:
+        return functools.reduce(operator.mul, inteiros)
 
 
 def divisao(inteiros):
@@ -182,6 +195,10 @@ def divisao(inteiros):
     0
     >>> divisao([0])
     0
+    >>> divisao([16, 4, 2])
+    2
+    >>> divisao([100, 2, 10])
+    5
     >>> divisao([0, 1])
     0
     >>> divisao([1, 0])
@@ -192,8 +209,10 @@ def divisao(inteiros):
 
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    if len(inteiros) == 0:
+        return 0
+    else:
+        return functools.reduce(operator.floordiv, inteiros)
 
 
 def operacao(operador, inteiros):
@@ -218,12 +237,21 @@ def operacao(operador, inteiros):
     Exception: Operador inválido
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    operacoes = {
+        '+': soma,
+        '-': subtracao,
+        '*': multiplicacao,
+        '/': divisao,
+    }
+
+    try:
+        return operacoes[operador](inteiros)
+    except KeyError:
+        raise Exception('Operador inválido')
 
 
 def maior(inteiros):
-    """A função `maior` deve receber um  *array* de números inteiros e retornar
+    """A função `maior` deve receber um *array* de números inteiros e retornar
     qual é o maior deles.
 
     >>> maior([0, 1 ,100])
@@ -237,8 +265,7 @@ def maior(inteiros):
 
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    return max(inteiros)
 
 
 def intersecao(a, b):
@@ -255,8 +282,7 @@ def intersecao(a, b):
     [2]
     """
 
-    # no lugar desse 'pass', coloque seu código
-    pass
+    return list(set(a).intersection(set(b)))
 
 
 if __name__ == "__main__":

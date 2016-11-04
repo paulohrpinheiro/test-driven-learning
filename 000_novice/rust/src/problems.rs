@@ -25,7 +25,7 @@
 //! SOFTWARE.
 
 
-// Inclua os módulos que precisar aqui:
+use std::collections::HashSet;
 
 
 /// A função `negue` deve receber um valor boleano (verdadeiro ou falso) e
@@ -39,7 +39,7 @@
 /// assert_eq!(false, rust::problems::negue(true));
 /// ```
 pub fn negue(value:bool) -> bool {
-    false
+    !value
 }
 
 
@@ -61,7 +61,13 @@ pub fn negue(value:bool) -> bool {
 /// assert_eq!("Olá, Paulo Henrique.", rust::problems::diga_ola("  Paulo Henrique  "));
 /// ```
 pub fn diga_ola(nome:&str) -> String {
-    "".to_string()
+    let nome_limpo = nome.trim();
+
+    if nome_limpo.is_empty() {
+        return "Olá!".to_string();
+    }
+
+    format!("Olá, {}.", &nome_limpo)
 }
 
 
@@ -81,7 +87,7 @@ pub fn diga_ola(nome:&str) -> String {
 /// assert_eq!(0, rust::problems::lista_numeros_pares(-1).len());
 /// ```
 pub fn lista_numeros_pares(quantos:i32) -> Vec<i32> {
-    vec![]
+    (1..quantos+1).map(|x| x*2).collect::<Vec<i32>>()
 }
 
 
@@ -102,7 +108,17 @@ pub fn lista_numeros_pares(quantos:i32) -> Vec<i32> {
 /// assert_eq!(vec![10, 20, 30], rust::problems::lista_multiplos(3, 10));
 /// ```
 pub fn lista_multiplos(quantos:i32, base:i32) -> Vec<i32> {
-    vec![]
+    if base == 0 {
+        return vec![];
+    }
+
+    let mut response = (1..quantos+1).map(|x| x*base).collect::<Vec<i32>>();
+
+    if base < 1 {
+        response.reverse();
+    }
+
+    response
 }
 
 
@@ -119,7 +135,7 @@ pub fn lista_multiplos(quantos:i32, base:i32) -> Vec<i32> {
 /// assert_eq!(3, rust::problems::soma(vec![1, 2]));
 /// ```
 pub fn soma(lista:Vec<i32>) -> i32 {
-    -1
+    lista.iter().fold(0, |result, x| result + x)
 }
 
 
@@ -141,7 +157,11 @@ pub fn soma(lista:Vec<i32>) -> i32 {
 /// assert_eq!(3, rust::problems::subtracao(vec![9, 3, 2, 1]));
 /// ```
 pub fn subtracao(lista:Vec<i32>) -> i32 {
-    -1
+    if lista.is_empty() {
+        return 0;
+    }
+
+    lista[1..lista.len()].iter().fold(lista[0], |result, x| result - x)
 }
 
 
@@ -158,7 +178,11 @@ pub fn subtracao(lista:Vec<i32>) -> i32 {
 /// assert_eq!(-8, rust::problems::multiplicacao(vec![-2, 1, 4]));
 /// assert_eq!(8, rust::problems::multiplicacao(vec![-2, -1, 4]));
 pub fn multiplicacao(lista:Vec<i32>) -> i32 {
-    -1
+    if lista.is_empty() {
+        return 0;
+    }
+
+    lista.iter().fold(1, |result, x| result * x)
 }
 
 
@@ -180,7 +204,11 @@ pub fn multiplicacao(lista:Vec<i32>) -> i32 {
 /// assert_eq!(0, rust::problems::divisao(vec![0, 1]));
 /// //assert_eq!(0, rust::problems::divisao(vec![1, 0]));
 pub fn divisao(lista:Vec<i32>) ->i32 {
-    -1
+    if lista.is_empty() {
+        return 0;
+    }
+
+    lista[1..lista.len()].iter().fold(lista[0], |result, x| result / x)
 }
 
 
@@ -195,7 +223,7 @@ pub fn divisao(lista:Vec<i32>) ->i32 {
 /// assert_eq!(100, rust::problems::maior(vec![0, 1 ,100]));
 /// assert_eq!(0, rust::problems::maior(vec![0]));
 pub fn maior(lista:Vec<i32>)-> i32 {
-    -1
+    lista.iter().fold(lista[0], |result, x| if *x > result {*x} else {result})
 }
 
 
@@ -211,5 +239,8 @@ pub fn maior(lista:Vec<i32>)-> i32 {
 /// assert_eq!(0, rust::problems::intersecao(vec![1, 2], vec![3, 4]).len());
 /// assert_eq!(vec![2], rust::problems::intersecao(vec![1, 2], vec![2, 3]));
 pub fn intersecao(a:Vec<i32>, b:Vec<i32>) -> Vec<i32> {
-    vec![]
+    let _a:HashSet<i32> = a.iter().cloned().collect();
+    let _b:HashSet<i32> = b.iter().cloned().collect();
+
+    _a.intersection(&_b).cloned().collect::<Vec<i32>>()
 }
