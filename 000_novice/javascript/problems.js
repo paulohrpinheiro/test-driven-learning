@@ -24,8 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+
 pass = 0;
 fail = 0;
+
+
+// Este é o nosso framwork de testes para javascript :)
 
 function doPass(message) {
     pass++;
@@ -45,6 +49,9 @@ function assert(functionRef, functionParameters, expected, description) {
         doFail(description);
     }
 };
+
+
+// Aqui estão as funcções para trabalharmos
 
 function assertAnyException(functionRef, functionParameters, description) {
     try {
