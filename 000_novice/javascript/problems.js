@@ -300,15 +300,7 @@ function maior(inteiros, quantos) {
         throw new Error('Lista vazia');
     }
 
-    var maiorNumero = inteiros[0];
-
-    for(var i=1; i<inteiros.length; i++) {
-        if(inteiros[i]>maiorNumero) {
-            maiorNumero = inteiros[i];
-        }
-    }
-
-    return maiorNumero;
+    return Math.max.apply(null, inteiros)
 }
 
 assert(maior, [[0, 1, 100]], 100, 'maior_001');
