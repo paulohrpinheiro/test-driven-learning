@@ -67,12 +67,14 @@ você trabalhou, execute o comando específico:
 
 Linguagem    | comando
 -------------|--------
-*Python3*    | `python3 problems.py`
+*Python*\*   | `python problems.py`
 *Perl*       | `perl tests.t`
 *C*          | `make test`
 *Rust*       | `cargo test`
-*Ruby**      | `ruby tests.rb -v`
+*Ruby*       | `ruby tests.rb -v`
 *JavaScript* | `d8 problems.js`
+
+\* Funciona tanto no *Python2* como *Python3*
 
 Se algum teste falhar, continue trabalhando e testando.
 
