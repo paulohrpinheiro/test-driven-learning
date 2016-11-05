@@ -1,3 +1,5 @@
+# *-* encoding: utf-8 *-*
+
 """
 Test Driven Learning Project.
 Desenvolva TDD e programação com TDD e programação!
@@ -30,6 +32,11 @@ SOFTWARE.
 """
 
 
+from __future__ import print_function
+from __future__ import division
+from __future__ import unicode_literals
+
+
 import functools
 import operator
 
@@ -55,16 +62,16 @@ def diga_ola(nome):
     limpa, ou seja, sem caracteres de espaço no começo ou no fim. Se a *string*
     estiver vazia, retorna apenas "Olá!"
 
-    >>> diga_ola('')
-    'Olá!'
-    >>> diga_ola('    ')
-    'Olá!'
-    >>> diga_ola('Paulo')
-    'Olá, Paulo.'
-    >>> diga_ola('  Paulo  ')
-    'Olá, Paulo.'
-    >>> diga_ola('  Paulo Henrique  ')
-    'Olá, Paulo Henrique.'
+    >>> print(diga_ola(''))
+    Olá!
+    >>> print(diga_ola('    '))
+    Olá!
+    >>> print(diga_ola('Paulo'))
+    Olá, Paulo.
+    >>> print(diga_ola('  Paulo  '))
+    Olá, Paulo.
+    >>> print(diga_ola('  Paulo Henrique  '))
+    Olá, Paulo Henrique.
     """
 
     nome_limpo = nome.strip()
@@ -234,7 +241,7 @@ def operacao(operador, inteiros):
     >>> operacao('=', [1, 2])
     Traceback (most recent call last):
     ...
-    Exception: Operador inválido
+    Exception: Operador inexistente
     """
 
     operacoes = {
@@ -247,7 +254,7 @@ def operacao(operador, inteiros):
     try:
         return operacoes[operador](inteiros)
     except KeyError:
-        raise Exception('Operador inválido')
+        raise Exception('Operador inexistente')
 
 
 def maior(inteiros):
@@ -289,5 +296,4 @@ if __name__ == "__main__":
     """Se executar o script, os testes serão executados."""
 
     import doctest
-
     doctest.testmod(verbose=True)
