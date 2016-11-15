@@ -27,6 +27,12 @@
 
 use std::collections::HashSet;
 
+#[derive(Debug)]
+#[derive(PartialEq)]
+pub enum ProblemsError {
+    InvalidOperator,
+    DivideByZero,
+}
 
 /// A função `negue` deve receber um valor boleano (verdadeiro ou falso) e
 /// retornar a negação desse valor.
@@ -185,7 +191,6 @@ pub fn multiplicacao(lista:Vec<i32>) -> i32 {
     lista.iter().fold(1, |result, x| result * x)
 }
 
-
 /// A função `divisao` deve receber um *array* de números inteiros, e
 /// retornar o resultado da sequência de divisões por cada elemento. Por
 /// exemplo, divisão([16, 4, 2]) deve retornar 2, e divisão([100,2,10]) deve
@@ -196,19 +201,56 @@ pub fn multiplicacao(lista:Vec<i32>) -> i32 {
 /// ```
 /// extern crate rust;
 ///
-/// assert_eq!(2, rust::problems::divisao(vec![5, 2]));
-/// assert_eq!(0, rust::problems::divisao(vec![]));
-/// assert_eq!(0, rust::problems::divisao(vec![0]));
-/// assert_eq!(2, rust::problems::divisao(vec![16, 4, 2]));
-/// assert_eq!(5, rust::problems::divisao(vec![100, 2, 10]));
-/// assert_eq!(0, rust::problems::divisao(vec![0, 1]));
-/// //assert_eq!(0, rust::problems::divisao(vec![1, 0]));
-pub fn divisao(lista:Vec<i32>) ->i32 {
+/// assert_eq!(Some(2), rust::problems::divisao(vec![5, 2]).ok());
+/// assert_eq!(Some(0), rust::problems::divisao(vec![]).ok());
+/// assert_eq!(Some(0), rust::problems::divisao(vec![0]).ok());
+/// assert_eq!(Some(2), rust::problems::divisao(vec![16, 4, 2]).ok());
+/// assert_eq!(Some(5), rust::problems::divisao(vec![100, 2, 10]).ok());
+/// assert_eq!(Some(0), rust::problems::divisao(vec![0, 1]).ok());
+/// assert_eq!(Err(rust::problems::ProblemsError::DivideByZero), rust::problems::divisao(vec![1, 0]));
+pub fn divisao(lista:Vec<i32>) -> Result<i32, ProblemsError> {
     if lista.is_empty() {
-        return 0;
+        return Ok(0);
     }
 
-    lista[1..lista.len()].iter().fold(lista[0], |result, x| result / x)
+    let mut result = lista[0];
+
+    for indice in 1..lista.len() {
+        if lista[indice] == 0 {
+            return Err(ProblemsError::DivideByZero);
+        }
+
+        result /= lista[indice];
+    } 
+
+    return Ok(result);
+}
+
+///  A função `operacao` deve receber dois parâmetros. O primeiro parâmetro é
+///  um caractere indicando a operação aritmética básica a ser realizada ('+',
+///  '-', '\*', '/'). O segundo parâmetro é um *array* de números inteiros, para
+///  os quais a operação deve ser aplicada. A função deve retornar o resultado
+///  da operação no *array*. Chame as funções já criadas para cada operação. Em
+///  caso de operação inválida, gere uma exceção.
+///
+/// Examples
+///
+/// ```
+/// extern crate rust;
+///
+/// assert_eq!(Some(3), rust::problems::operacao('+', vec![1, 2]).ok());
+/// assert_eq!(Some(-1), rust::problems::operacao('-', vec![1, 2]).ok());
+/// assert_eq!(Some(2), rust::problems::operacao('*', vec![1, 2]).ok());
+/// assert_eq!(Some(0), rust::problems::operacao('/', vec![1, 2]).ok());
+/// assert_eq!(Err(rust::problems::ProblemsError::InvalidOperator), rust::problems::operacao('=', vec![1, 2]));
+pub fn operacao(operador: char, lista:Vec<i32>) -> Result<i32, ProblemsError> {
+    match operador {
+        '+' => Ok(soma(lista)),
+        '-' => Ok(subtracao(lista)),
+        '*' => Ok(multiplicacao(lista)),
+        '/' => divisao(lista), // returns Result
+        _   => Err(ProblemsError::InvalidOperator), 
+    }
 }
 
 
