@@ -60,6 +60,7 @@ Agora você pode começar a trabalhar no diretório da linguagem que você prefe
 1. [Rust](000_novice/rust)
 1. [Ruby](000_novice/ruby)
 1. [JavaScript](000_novice/javascript)
+1. [GO](000_novice/go)
 
 
 Para testar, cada linguagem tem seu comando. Dentro da pasta e *branch* que
@@ -73,6 +74,7 @@ Linguagem    | comando
 *Rust*       | `cargo test`
 *Ruby*       | `ruby tests.rb -v`
 *JavaScript* | `d8 problems.js`
+GO         | `go test -v`
 
 \* Funciona tanto no *Python2* como *Python3*
 
