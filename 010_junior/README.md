@@ -14,11 +14,11 @@ forma `NOME.dat`.
 
 O arquivo de definições terá uma ou mais linhas com a seguinte forma:
 
-    NOME_CAMPO, TAMANHO_CAMPO
+    NOME_CAMPO, TIPO_CAMPO, TAMANHO_CAMPO
 
 
-Ou seja, cada par (NOME_CAMPO, TAMANHO_CAMPO) deve ser seguido de um
-caracter '\n'.
+Ou seja, cada tupla (NOME_CAMPO, TIPO_CAMPO, TAMANHO_CAMPO) deve ser seguido de
+um caracter '\n'.
 
 
 ## Interface
