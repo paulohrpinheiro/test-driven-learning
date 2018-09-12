@@ -94,7 +94,7 @@ func TestSoma(t *testing.T) {
 
 	for _, test := range tests {
 		if got := Soma(test.input); got != test.want {
-			t.Errorf("TestSoma(%v) = %v", test.input, got)
+			t.Errorf("Soma(%v) = %v", test.input, got)
 		}
 	}
 }
