@@ -181,7 +181,23 @@ func TestOperacao(t *testing.T) {
 }
 
 func TestMaior(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input []int
+		want  int
+		err   error
+	}{
+		{[]int{0, 1, 100}, 100, nil},
+		{[]int{0}, 0, nil},
+		{[]int{}, 0, EmptySetError},
+	}
+
+	for _, test := range tests {
+		got, err := Maior(test.input)
+
+		if got != test.want || err != test.err {
+			t.Errorf("Maior(%v) = %v", test.input, got)
+		}
+	}
 }
 
 func TestIntersecao(t *testing.T) {
