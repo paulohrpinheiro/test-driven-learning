@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestNegue(t *testing.T) {
 	var tests = []struct {
@@ -37,7 +40,24 @@ func TestDigaOla(t *testing.T) {
 }
 
 func TestListaNumerosPares(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input int
+		want  []int
+	}{
+		{0, []int{}},
+		{1, []int{2}},
+		{4, []int{2, 4, 6, 8}},
+		{5, []int{2, 4, 6, 8, 10}},
+		{-1, []int{}},
+	}
+
+	for _, test := range tests {
+		got := ListaNumerosPares(test.input)
+
+		if !reflect.DeepEqual(got, test.want) {
+			t.Errorf("ListaNumerosPares(%v) = %v", test.input, got)
+		}
+	}
 }
 
 func TestListaMultiplos(t *testing.T) {

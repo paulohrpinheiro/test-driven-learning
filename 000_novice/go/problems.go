@@ -7,3 +7,7 @@ func Negue(v bool) bool {
 func DigaOla(v string) string {
 	return ""
 }
+
+func ListaNumerosPares(v int) []int {
+	return []int{1}
+}
