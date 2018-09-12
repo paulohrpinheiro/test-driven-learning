@@ -201,5 +201,21 @@ func TestMaior(t *testing.T) {
 }
 
 func TestIntersecao(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input1 []int
+		input2 []int
+		want   []int
+	}{
+		{[]int{}, []int{}, []int{}},
+		{[]int{1, 2}, []int{3, 4}, []int{}},
+		{[]int{1, 2}, []int{2, 3}, []int{2}},
+	}
+
+	for _, test := range tests {
+		got := Intersecao(test.input1, test.input2)
+
+		if !reflect.DeepEqual(got, test.want) {
+			t.Errorf("Intersecao(%v, %v) = %v", test.input1, test.input2, got)
+		}
+	}
 }

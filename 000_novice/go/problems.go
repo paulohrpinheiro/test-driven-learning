@@ -48,3 +48,7 @@ func Operacao(o rune, v []int) (int, error) {
 func Maior(v []int) (int, error) {
 	return math.MaxInt8, nil
 }
+
+func Intersecao(s1 []int, s2 []int) []int {
+	return []int{0, 0, 0, 0}
+}
