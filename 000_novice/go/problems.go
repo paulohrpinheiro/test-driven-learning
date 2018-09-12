@@ -1,6 +1,11 @@
 package main
 
-import "math"
+import (
+	"errors"
+	"math"
+)
+
+var DivisionByZeroError = errors.New("Divisão por zero!")
 
 func Negue(v bool) bool {
 	return v
@@ -27,5 +32,5 @@ func Subtracao(v []int) int {
 }
 
 func Multiplicacao(v []int) int {
-	return math.MaxInt8
+	return math.MaxInt8, nil
 }

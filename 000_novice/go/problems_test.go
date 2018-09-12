@@ -138,7 +138,24 @@ func TestMultiplicacao(t *testing.T) {
 }
 
 func TestDivisao(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input []int
+		want  int
+		err   error
+	}{
+		{[]int{5, 2}, 2, nil},
+		{[]int{}, 0, nil},
+		{[]int{0}, 0, nil},
+		{[]int{0, 1}, 0, nil},
+		{[]int{1, 0}, nil, DivisionByZeroError},
+	}
+
+	for _, test := range tests {
+		got, err := Divisao(test.input)
+		if got != test.want and err != test.err {
+			t.Errorf("Divisao(%v) = %v (error=%q)", test.input, got, err)
+		}
+	}
 }
 
 func TestOperacao(t *testing.T) {
