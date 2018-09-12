@@ -159,7 +159,25 @@ func TestDivisao(t *testing.T) {
 }
 
 func TestOperacao(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input1 rune
+		input2 []int
+		want   int
+		err    error
+	}{
+		{'+', []int{1, 2}, 3, nil},
+		{'-', []int{1, 2}, -1, nil},
+		{'*', []int{1, 2}, 2, nil},
+		{'/', []int{1, 2}, 0, nil},
+		{'=', []int{1, 2}, 0, UnknownOperator},
+	}
+
+	for _, test := range tests {
+		got, err := Operacao(test.input1, test.input2)
+		if got != test.want || err != test.err {
+			t.Errorf("Operacao(%q, %v) = %v (error=%v)", string(test.input1), test.input2, got, err)
+		}
+	}
 }
 
 func TestMaior(t *testing.T) {

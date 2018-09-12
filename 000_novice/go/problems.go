@@ -6,6 +6,7 @@ import (
 )
 
 var DivisionByZeroError = errors.New("Divisão por zero!")
+var UnknownOperator = errors.New("Operador desconhecido!")
 
 func Negue(v bool) bool {
 	return v
@@ -36,5 +37,9 @@ func Multiplicacao(v []int) int {
 }
 
 func Divisao(v []int) (int, error) {
+	return math.MaxInt8, nil
+}
+
+func Operacao(o rune, v []int) (int, error) {
 	return math.MaxInt8, nil
 }
