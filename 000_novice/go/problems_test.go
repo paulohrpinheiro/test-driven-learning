@@ -61,7 +61,25 @@ func TestListaNumerosPares(t *testing.T) {
 }
 
 func TestListaMultiplos(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input1 int
+		input2 int
+		want   []int
+	}{
+		{0, 10, []int{}},
+		{-1, 10, []int{}},
+		{3, -1, []int{-3, -3, -1}},
+		{3, 0, []int{}},
+		{3, 10, []int{10, 20, 30}},
+	}
+
+	for _, test := range tests {
+		got := ListaMultiplos(test.input1, test.input2)
+
+		if !reflect.DeepEqual(got, test.want) {
+			t.Errorf("TestListaMultiplos(%v, %v) = %v", test.input1, test.input2, got)
+		}
+	}
 }
 
 func TestSoma(t *testing.T) {
