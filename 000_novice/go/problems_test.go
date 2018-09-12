@@ -120,7 +120,21 @@ func TestSubtracao(t *testing.T) {
 }
 
 func TestMultiplicacao(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input []int
+		want  int
+	}{
+		{[]int{1, 2, 3}, 6},
+		{[]int{}, 0},
+		{[]int{-2, 1, 4}, -8},
+		{[]int{-2, -1, 4}, 8},
+	}
+
+	for _, test := range tests {
+		if got := Multiplicacao(test.input); got != test.want {
+			t.Errorf("Multiplicacao(%v) = %v", test.input, got)
+		}
+	}
 }
 
 func TestDivisao(t *testing.T) {

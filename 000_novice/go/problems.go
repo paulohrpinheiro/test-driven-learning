@@ -25,3 +25,7 @@ func Soma(v []int) int {
 func Subtracao(v []int) int {
 	return math.MaxInt8
 }
+
+func Multiplicacao(v []int) int {
+	return math.MaxInt8
+}
