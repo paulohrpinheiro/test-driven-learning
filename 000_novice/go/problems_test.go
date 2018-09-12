@@ -19,7 +19,21 @@ func TestNegue(t *testing.T) {
 }
 
 func TestDigaOla(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input string
+		want  string
+	}{
+		{"", "Olá!"},
+		{"    ", "Olá!"},
+		{"Paulo", "Olá, Paulo."},
+		{"  Paulo  ", "Olá, Paulo."},
+	}
+
+	for _, test := range tests {
+		if got := DigaOla(test.input); got != test.want {
+			t.Errorf("DigaOla(%q) = %q", test.input, got)
+		}
+	}
 }
 
 func TestListaNumerosPares(t *testing.T) {
