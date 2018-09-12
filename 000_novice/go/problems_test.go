@@ -83,7 +83,20 @@ func TestListaMultiplos(t *testing.T) {
 }
 
 func TestSoma(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input []int
+		want  int
+	}{
+		{[]int{}, 0},
+		{[]int{1}, 1},
+		{[]int{1, 2}, 3},
+	}
+
+	for _, test := range tests {
+		if got := Soma(test.input); got != test.want {
+			t.Errorf("TestSoma(%v) = %v", test.input, got)
+		}
+	}
 }
 
 func TestSubtracao(t *testing.T) {

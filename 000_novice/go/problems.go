@@ -1,5 +1,7 @@
 package main
 
+import "math"
+
 func Negue(v bool) bool {
 	return v
 }
@@ -14,4 +16,8 @@ func ListaNumerosPares(v int) []int {
 
 func ListaMultiplos(v1 int, v2 int) []int {
 	return []int{1, 2, 3, 4, 5}
+}
+
+func Soma(v []int) int {
+	return math.MaxInt8
 }
