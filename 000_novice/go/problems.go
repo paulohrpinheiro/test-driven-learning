@@ -21,3 +21,7 @@ func ListaMultiplos(v1 int, v2 int) []int {
 func Soma(v []int) int {
 	return math.MaxInt8
 }
+
+func Subtracao(v []int) int {
+	return math.MaxInt8
+}

@@ -100,7 +100,23 @@ func TestSoma(t *testing.T) {
 }
 
 func TestSubtracao(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input []int
+		want  int
+	}{
+		{[]int{3, 2, 1}, 0},
+		{[]int{10, 2, 3}, 5},
+		{[]int{}, 0},
+		{[]int{1, 2}, -1},
+		{[]int{-1, -2, -3}, 4},
+		{[]int{9, 3, 2, 1}, 3},
+	}
+
+	for _, test := range tests {
+		if got := Subtracao(test.input); got != test.want {
+			t.Errorf("Subtracao(%v) = %v", test.input, got)
+		}
+	}
 }
 
 func TestMultiplicacao(t *testing.T) {
