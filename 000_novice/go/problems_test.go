@@ -77,7 +77,7 @@ func TestListaMultiplos(t *testing.T) {
 		got := ListaMultiplos(test.input1, test.input2)
 
 		if !reflect.DeepEqual(got, test.want) {
-			t.Errorf("TestListaMultiplos(%v, %v) = %v", test.input1, test.input2, got)
+			t.Errorf("ListaMultiplos(%v, %v) = %v", test.input1, test.input2, got)
 		}
 	}
 }
