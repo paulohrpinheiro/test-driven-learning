@@ -10,7 +10,7 @@ var UnknownOperator = errors.New("Operador desconhecido!")
 var EmptySetError = errors.New("Conjunto vazio!")
 
 func Negue(v bool) bool {
-	return v
+	return !v
 }
 
 func DigaOla(v string) string {
