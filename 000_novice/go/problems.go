@@ -32,5 +32,9 @@ func Subtracao(v []int) int {
 }
 
 func Multiplicacao(v []int) int {
+	return math.MaxInt8
+}
+
+func Divisao(v []int) (int, error) {
 	return math.MaxInt8, nil
 }

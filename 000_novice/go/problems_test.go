@@ -147,13 +147,13 @@ func TestDivisao(t *testing.T) {
 		{[]int{}, 0, nil},
 		{[]int{0}, 0, nil},
 		{[]int{0, 1}, 0, nil},
-		{[]int{1, 0}, nil, DivisionByZeroError},
+		{[]int{1, 0}, 0, DivisionByZeroError},
 	}
 
 	for _, test := range tests {
 		got, err := Divisao(test.input)
-		if got != test.want and err != test.err {
-			t.Errorf("Divisao(%v) = %v (error=%q)", test.input, got, err)
+		if got != test.want || err != test.err {
+			t.Errorf("Divisao(%v) = %v (error=%v)", test.input, got, err)
 		}
 	}
 }
