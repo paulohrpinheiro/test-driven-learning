@@ -3,7 +3,19 @@ package main
 import "testing"
 
 func TestNegue(t *testing.T) {
-	t.Fatal("not implemented")
+	var tests = []struct {
+		input bool
+		want  bool
+	}{
+		{true, false},
+		{false, true},
+	}
+
+	for _, test := range tests {
+		if got := Negue(test.input); got != test.want {
+			t.Errorf("Negue(%t) = %t", test.input, got)
+		}
+	}
 }
 
 func TestDigaOla(t *testing.T) {
