@@ -37,8 +37,25 @@ func ListaNumerosPares(quantos int) []int {
 	return response
 }
 
-func ListaMultiplos(v1 int, v2 int) []int {
-	return []int{1, 2, 3, 4, 5}
+func ListaMultiplos(quantos int, base int) []int {
+	if quantos < 1 || base == 0 {
+		return []int{}
+	}
+
+	multiplos := make([]int, quantos)
+
+	var factor int
+	for i := range multiplos {
+		if base < 0 {
+			factor = quantos - i
+		} else {
+			factor = i + 1
+		}
+
+		multiplos[i] = base * factor
+	}
+
+	return multiplos
 }
 
 func Soma(v []int) int {
