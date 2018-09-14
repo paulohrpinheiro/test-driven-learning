@@ -24,7 +24,16 @@ func DigaOla(v string) string {
 }
 
 func ListaNumerosPares(v int) []int {
-	return []int{1}
+	if v < 1 {
+		return []int{}
+	}
+	response := make([]int, v)
+
+	for i := range response {
+		response[i] = (i + 1) * 2
+	}
+
+	return response
 }
 
 func ListaMultiplos(v1 int, v2 int) []int {
