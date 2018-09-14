@@ -28,13 +28,13 @@ func ListaNumerosPares(quantos int) []int {
 		return []int{}
 	}
 
-	response := make([]int, quantos)
+	pares := make([]int, quantos)
 
-	for i := range response {
-		response[i] = (i + 1) * 2
+	for i := range pares {
+		pares[i] = (i + 1) * 2
 	}
 
-	return response
+	return pares
 }
 
 func ListaMultiplos(quantos int, base int) []int {
