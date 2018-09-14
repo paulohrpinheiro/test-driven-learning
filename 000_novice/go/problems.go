@@ -23,11 +23,12 @@ func DigaOla(v string) string {
 	return "Olá!"
 }
 
-func ListaNumerosPares(v int) []int {
-	if v < 1 {
+func ListaNumerosPares(quantos int) []int {
+	if quantos < 1 {
 		return []int{}
 	}
-	response := make([]int, v)
+
+	response := make([]int, quantos)
 
 	for i := range response {
 		response[i] = (i + 1) * 2
