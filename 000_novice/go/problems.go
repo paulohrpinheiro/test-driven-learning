@@ -2,7 +2,9 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"math"
+	"strings"
 )
 
 var DivisionByZeroError = errors.New("Divisão por zero!")
@@ -14,7 +16,11 @@ func Negue(v bool) bool {
 }
 
 func DigaOla(v string) string {
-	return ""
+	if cleaned := strings.TrimSpace(v); cleaned != "" {
+		return fmt.Sprintf("Olá, %v.", cleaned)
+	}
+
+	return "Olá!"
 }
 
 func ListaNumerosPares(v int) []int {
