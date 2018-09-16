@@ -113,8 +113,19 @@ func Divisao(itens []int) (int, error) {
 	return resultado, nil
 }
 
-func Operacao(o rune, v []int) (int, error) {
-	return math.MaxInt8, nil
+func Operacao(operador rune, itens []int) (int, error) {
+	switch operador {
+	case '+':
+		return Soma(itens), nil
+	case '-':
+		return Subtracao(itens), nil
+	case '*':
+		return Multiplicacao(itens), nil
+	case '/':
+		return Divisao(itens)
+	default:
+		return 0, UnknownOperator
+	}
 }
 
 func Maior(v []int) (int, error) {
