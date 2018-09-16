@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"math"
 	"strings"
 )
 
@@ -128,8 +127,20 @@ func Operacao(operador rune, itens []int) (int, error) {
 	}
 }
 
-func Maior(v []int) (int, error) {
-	return math.MaxInt8, nil
+func Maior(itens []int) (int, error) {
+	if len(itens) == 0 {
+		return 0, EmptySetError
+	}
+
+	maior := itens[0]
+
+	for _, valor := range itens[1:] {
+		if valor > maior {
+			maior = valor
+		}
+	}
+
+	return maior, nil
 }
 
 func Intersecao(s1 []int, s2 []int) []int {
