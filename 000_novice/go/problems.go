@@ -143,6 +143,24 @@ func Maior(itens []int) (int, error) {
 	return maior, nil
 }
 
+func elemento_pertence(elemento int, conjunto []int) bool {
+	for _, item := range conjunto {
+		if item == elemento {
+			return true
+		}
+	}
+
+	return false
+}
+
 func Intersecao(s1 []int, s2 []int) []int {
-	return []int{0, 0, 0, 0}
+	resultado := []int{}
+
+	for _, elemento := range s1 {
+		if elemento_pertence(elemento, s2) {
+			resultado = append(resultado, elemento)
+		}
+	}
+
+	return resultado
 }
