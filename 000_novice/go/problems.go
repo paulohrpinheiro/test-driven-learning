@@ -94,11 +94,23 @@ func Multiplicacao(itens []int) int {
 	}
 
 	return resultado
-
 }
 
-func Divisao(v []int) (int, error) {
-	return math.MaxInt8, nil
+func Divisao(itens []int) (int, error) {
+	if len(itens) == 0 {
+		return 0, nil
+	}
+
+	resultado := itens[0]
+
+	for _, parcela := range itens[1:] {
+		if parcela == 0 {
+			return 0, DivisionByZeroError
+		}
+		resultado /= parcela
+	}
+
+	return resultado, nil
 }
 
 func Operacao(o rune, v []int) (int, error) {
