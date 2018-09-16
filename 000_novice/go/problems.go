@@ -58,8 +58,14 @@ func ListaMultiplos(quantos int, base int) []int {
 	return multiplos
 }
 
-func Soma(v []int) int {
-	return math.MaxInt8
+func Soma(itens []int) int {
+	soma := 0
+
+	for _, parcela := range itens {
+		soma += parcela
+	}
+
+	return soma
 }
 
 func Subtracao(v []int) int {
