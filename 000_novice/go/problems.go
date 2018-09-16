@@ -68,8 +68,18 @@ func Soma(itens []int) int {
 	return soma
 }
 
-func Subtracao(v []int) int {
-	return math.MaxInt8
+func Subtracao(itens []int) int {
+	if len(itens) == 0 {
+		return 0
+	}
+
+	resultado := itens[0]
+
+	for _, parcela := range itens[1:] {
+		resultado -= parcela
+	}
+
+	return resultado
 }
 
 func Multiplicacao(v []int) int {
